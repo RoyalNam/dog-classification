@@ -1,0 +1,12 @@
+torch==2.1.2
+torchvision
+torchsummary
+tqdm
+PyYAML
+gdown
+Flask
+Flask-Cors
+mlflow==2.9.2
+dvc
+joblib
+notebook
