@@ -1,3 +1,4 @@
 /.idea
 /src/dog_classification.egg-info
 /logs
+/artifacts

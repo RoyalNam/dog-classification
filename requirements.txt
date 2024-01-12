@@ -3,7 +3,7 @@ torchvision
 torchsummary
 tqdm
 PyYAML
-gdown
+gdown==4.6.0
 Flask
 Flask-Cors
 mlflow==2.9.2

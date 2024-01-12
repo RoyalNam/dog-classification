@@ -6,6 +6,7 @@ import json
 import base64
 from typing import Any
 from cnnClassifier import logger
+import torch
 
 
 def read_yaml(path: Path):
@@ -28,6 +29,10 @@ def create_dir(list_path: list, verbose=True):
         except Exception as e:
             logger.error(f"Error creating directory at {path}: {e}")
             raise
+
+
+def save_model(model: torch.nn.Module, path: Path):
+    torch.save(model, path)
 
 
 def save_json(path: Path, data: dict):
