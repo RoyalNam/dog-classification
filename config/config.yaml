@@ -11,3 +11,9 @@ dataloader:
   train_dir: artifacts/data_ingestion/train
   test_dir: artifacts/data_ingestion/test
   image_transforms_path: artifacts/data_ingestion/transforms.pth
+
+
+prepare_model:
+  root_dir: artifacts/prepare_model
+  base_model_path: artifacts/prepare_model/base_model.pth
+  updated_model_path: artifacts/prepare_model/updated_model.pth

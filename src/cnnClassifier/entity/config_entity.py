@@ -18,3 +18,13 @@ class DataLoaderConfig:
     image_transforms_path: Path
     weights: str
     params_batch_size: int
+
+
+@dataclass(frozen=True)
+class PrepareModelConfig:
+    root_dir: Path
+    base_model_path: Path
+    updated_model_path: Path
+    params_weights: str
+    params_model: str
+    params_seed: int

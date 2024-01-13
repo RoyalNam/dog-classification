@@ -1,6 +1,10 @@
 from cnnClassifier.constants import *
 from cnnClassifier.utils.common import read_yaml, create_dir
-from cnnClassifier.entity.config_entity import (DataIngestionConfig, DataLoaderConfig)
+from cnnClassifier.entity.config_entity import (
+    DataIngestionConfig,
+    DataLoaderConfig,
+    PrepareModelConfig
+)
 
 
 class ConfigurationManager:
@@ -40,3 +44,16 @@ class ConfigurationManager:
         )
         return dataloader_config
     
+    def get_prepare_model_config(self):
+        config = self.config['prepare_model']
+        create_dir([config['root_dir']])
+        
+        prepare_model_config = PrepareModelConfig(
+            root_dir=config['root_dir'],
+            base_model_path=config['base_model_path'],
+            updated_model_path=config['updated_model_path'],
+            params_weights=self.params['WEIGHTS'],
+            params_model=self.params['MODEL'],
+            params_seed=self.params['SEED']
+        )
+        return prepare_model_config
