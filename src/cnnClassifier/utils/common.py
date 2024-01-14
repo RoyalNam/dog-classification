@@ -4,7 +4,7 @@ import yaml
 import joblib
 import json
 import base64
-from typing import Any
+from typing import Any, Union
 from cnnClassifier import logger
 import torch
 
@@ -17,6 +17,19 @@ def read_yaml(path: Path):
             return content
     except Exception as e:
         logger.error(f"Error loading YAML file from {path}: {e}")
+        raise
+
+
+def add_to_yaml(path: Path, key: str, value: Union[int, str]):
+    try:
+        with open(path, 'r') as f:
+            data = yaml.safe_load(f)
+        data[key] = value
+        
+        with open(path, 'w') as f:
+            yaml.dump(data, f)
+            logger.info(f"Add {key} to yaml file {path} successfully")
+    except Exception:
         raise
 
 

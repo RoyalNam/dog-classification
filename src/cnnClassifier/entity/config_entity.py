@@ -28,3 +28,13 @@ class PrepareModelConfig:
     params_weights: str
     params_model: str
     params_seed: int
+    
+@dataclass(frozen=True)
+class TrainerConfig:
+    root_dir: Path
+    trained_model_path: Path
+    updated_model_path: Path
+    params_epochs: int
+    params_lr: float
+    mlflow_uri: str
+    all_params: dict

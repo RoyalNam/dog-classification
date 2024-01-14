@@ -10,10 +10,16 @@ dataloader:
   root_dir: artifacts/dataloader
   train_dir: artifacts/data_ingestion/train
   test_dir: artifacts/data_ingestion/test
-  image_transforms_path: artifacts/data_ingestion/transforms.pth
+  image_transforms_path: artifacts/dataloader/transforms.pth
 
 
 prepare_model:
   root_dir: artifacts/prepare_model
   base_model_path: artifacts/prepare_model/base_model.pth
   updated_model_path: artifacts/prepare_model/updated_model.pth
+
+trainer:
+  root_dir: artifacts/trainer
+  trained_model_path: artifacts/trainer/model.pth
+  updated_model_path: artifacts/prepare_model/updated_model.pth
+  mlflow_uri: https://dagshub.com/RoyalNam/dog-classification.mlflow

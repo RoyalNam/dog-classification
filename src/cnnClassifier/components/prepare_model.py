@@ -2,8 +2,9 @@ import torch
 from torch import nn
 import torchvision
 from torchsummary import summary
-from cnnClassifier.utils.common import save_model
+from cnnClassifier.utils.common import save_model, add_to_yaml
 from cnnClassifier.entity.config_entity import PrepareModelConfig
+from cnnClassifier.constants import *
 
 
 class PrepareModel:
@@ -16,6 +17,7 @@ class PrepareModel:
         weights = torchvision.models.get_weight(f"{self.config.params_weights}.DEFAULT")
         self.model = torchvision.models.get_model(self.config.params_model, weights=weights)
         
+        add_to_yaml(PARAMS_PATH, 'CLASSES', self.num_classes)
         save_model(self.model, self.config.base_model_path)
     
     def _prepare_full_model(self, num_classes, seed = 42):

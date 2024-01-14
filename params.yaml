@@ -1,7 +1,7 @@
 BATCH_SIZE: 32
 CLASSES: 70
-EPOCHS: 15
+EPOCHS: 1
 LEARNING_RATE: 0.01
 MODEL: shufflenet_v2_x0_5
-WEIGHTS: ShuffleNet_V2_X0_5_Weights
 SEED: 42
+WEIGHTS: ShuffleNet_V2_X0_5_Weights

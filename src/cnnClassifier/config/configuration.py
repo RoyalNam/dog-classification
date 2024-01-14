@@ -3,7 +3,8 @@ from cnnClassifier.utils.common import read_yaml, create_dir
 from cnnClassifier.entity.config_entity import (
     DataIngestionConfig,
     DataLoaderConfig,
-    PrepareModelConfig
+    PrepareModelConfig,
+    TrainerConfig
 )
 
 
@@ -57,3 +58,19 @@ class ConfigurationManager:
             params_seed=self.params['SEED']
         )
         return prepare_model_config
+    
+    def get_trainer_config(self) -> TrainerConfig:
+        config = self.config['trainer']
+        params = self.params
+        create_dir([config['root_dir']])
+        
+        trainer_config = TrainerConfig(
+            root_dir=config['root_dir'],
+            trained_model_path=config['trained_model_path'],
+            updated_model_path=config['updated_model_path'],
+            mlflow_uri=config['mlflow_uri'],
+            params_epochs=params['EPOCHS'],
+            params_lr=params['LEARNING_RATE'],
+            all_params=params
+        )
+        return trainer_config

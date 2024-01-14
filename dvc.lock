@@ -1,0 +1,75 @@
+schema: '2.0'
+stages:
+  data_ingestion:
+    cmd: python src/cnnClassifier/pipeline/stage_01_data_ingestion.py
+    deps:
+    - path: config/config.yaml
+      hash: md5
+      md5: 11e3f6363f2a1e718385f54cd2947b22
+      size: 882
+    - path: src/cnnClassifier/pipeline/stage_01_data_ingestion.py
+      hash: md5
+      md5: e6bdecb118077f95ece2ffa0536cea41
+      size: 877
+    outs:
+    - path: artifacts/data_ingestion
+      hash: md5
+      md5: 2ea8fce12daf50a4faf31bfbdbe55fe0.dir
+      size: 451069525
+      nfiles: 9348
+  prepare_model:
+    cmd: python src/cnnClassifier/pipeline/stage_03_prepare_model.py
+    deps:
+    - path: config/config.yaml
+      hash: md5
+      md5: 11e3f6363f2a1e718385f54cd2947b22
+      size: 882
+    - path: src/cnnClassifier/pipeline/stage_02_dataloader.py
+      hash: md5
+      md5: 2e2899308607abbf0d78d2301d11db7d
+      size: 971
+    - path: src/cnnClassifier/pipeline/stage_03_prepare_model.py
+      hash: md5
+      md5: 3bd938817316e56d198a1c9731e76cb7
+      size: 1120
+    outs:
+    - path: artifacts/prepare_model
+      hash: md5
+      md5: b5cff7f35cf5d4e9b7ced43b2dca3540.dir
+      size: 11289634
+      nfiles: 2
+  trainer:
+    cmd: python src/cnnClassifier/pipeline/stage_04_trainer.py
+    deps:
+    - path: artifacts/prepare_model
+      hash: md5
+      md5: b5cff7f35cf5d4e9b7ced43b2dca3540.dir
+      size: 11289634
+      nfiles: 2
+    - path: config/config.yaml
+      hash: md5
+      md5: 11e3f6363f2a1e718385f54cd2947b22
+      size: 882
+    - path: src/cnnClassifier/pipeline/stage_02_dataloader.py
+      hash: md5
+      md5: 2e2899308607abbf0d78d2301d11db7d
+      size: 971
+    - path: src/cnnClassifier/pipeline/stage_04_trainer.py
+      hash: md5
+      md5: 0bb793222bc5933c11e0ac0b8d0d5f3e
+      size: 1388
+    params:
+      params.yaml:
+        BATCH_SIZE: 32
+        EPOCHS: 1
+        LEARNING_RATE: 0.01
+    outs:
+    - path: artifacts/trainer
+      hash: md5
+      md5: bc232f5423db88ee47389f7bfc3925c9.dir
+      size: 5592418
+      nfiles: 1
+    - path: scores.json
+      hash: md5
+      md5: 6276bb728c10ff69808f84d2b4cda9af
+      size: 73

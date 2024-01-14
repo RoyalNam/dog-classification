@@ -1,5 +1,5 @@
 /.idea
 /src/dog_classification.egg-info
-/logs
+logs/
 /artifacts
 __pycache__/

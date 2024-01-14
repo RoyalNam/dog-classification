@@ -1,4 +1,4 @@
-from cnnClassifier.pipeline.state_02_dataloader import DataLoaderPipeline
+from cnnClassifier.pipeline.stage_02_dataloader import DataLoaderPipeline
 from cnnClassifier.config.configuration import ConfigurationManager
 from cnnClassifier.components.prepare_model import PrepareModel
 from cnnClassifier import logger
