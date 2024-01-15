@@ -77,7 +77,7 @@ class Trainer:
             "test_acc": test_accs,
             "test_loss": test_losses,
         }
-        self.scores = {"loss": self.result['train_acc'][-1], "accuracy": self.result['train_loss'][-1]}
+        self.scores = {"loss": self.result['train_loss'][-1], "accuracy": self.result['train_accs'][-1]}
 
         save_model(self.model.state_dict(), self.config.trained_model_path)
         save_json(path=Path("scores.json"), data=self.scores)
