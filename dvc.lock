@@ -61,15 +61,15 @@ stages:
     params:
       params.yaml:
         BATCH_SIZE: 32
-        EPOCHS: 1
+        EPOCHS: 16
         LEARNING_RATE: 0.01
     outs:
     - path: artifacts/trainer
       hash: md5
-      md5: bc232f5423db88ee47389f7bfc3925c9.dir
+      md5: dba6bc38a32c4a1c4b31d3b8e5314f84.dir
       size: 5592418
       nfiles: 1
     - path: scores.json
       hash: md5
-      md5: 6276bb728c10ff69808f84d2b4cda9af
+      md5: a43bb9699b1e36e6e550c3b859cd709f
       size: 73
